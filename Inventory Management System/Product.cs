@@ -25,11 +25,12 @@ namespace Inventory_Management_System
         public void Input()
         {   //Validating the input to ensure its correctness
             bool IsValid = false;
-            
-           
+            string Name;
+            Double Price;
+            int Quantity;
             do
             {
-                string Name;
+                
                 // Inform the user to enter the product's name
                 Console.Write("Enter the product's name: ");
                 Name = Console.ReadLine();
@@ -46,7 +47,7 @@ namespace Inventory_Management_System
             IsValid = false;
             do
             {
-                Double Price;
+                
                 // Inform the user to enter the product's price
                 Console.Write("Enter the product's price: ");
 
@@ -67,7 +68,7 @@ namespace Inventory_Management_System
             IsValid = false;
             do
             {
-                int Quantity;
+                
                 // Inform the user to enter the product's quantity
                 Console.Write("Enter the product's quantity: ");
 

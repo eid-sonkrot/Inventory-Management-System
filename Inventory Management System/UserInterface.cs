@@ -11,18 +11,23 @@ namespace Inventory_Management_System
     {
         static void Main(string[] args)
         {
-            
 
+            Inventory inventory = new Inventory();
             while (true)
             {
                 Console.WriteLine("Welcome to the Inventory Management System!");
                 DisplayMenu();
                 int choice = GetChoiceFromUser();
-
                 switch (choice)
                 {
                     case 1:
-                        //  add a product to the inventory
+                        //  add a product to the inventorys
+                        {
+                            Product product = new Product();
+                            product.Input();
+                            Inventory.AddProduct( product);
+                        }
+                        
                         break;
                     case 2:
                         // display all products in the inventory
@@ -69,6 +74,7 @@ namespace Inventory_Management_System
                 Console.WriteLine("Welcome to the Inventory Management System!");
                 DisplayMenu();
                 Console.Write("Invalid input. Enter a valid choice (1-6): ");
+                System.Threading.Thread.Sleep(1000);
 
             }
             return choice;
