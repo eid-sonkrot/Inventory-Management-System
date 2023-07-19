@@ -31,6 +31,9 @@ namespace Inventory_Management_System
                         break;
                     case 2:
                         // display all products in the inventory
+                        Inventory.DisplayProducts();
+                        Console.WriteLine("Press any key to Back to Main Menu...");
+                        Console.ReadKey(); // Waits for the user to press any key
                         break;
                     case 3:
                         // edit an existing product in the inventory
