@@ -170,5 +170,19 @@ namespace Inventory_Management_System
                     " please select add option from the main list.");
             }
         }
+        public static void RemoveProduct(string name)
+        {
+            if (products.Find(x => x.Name.Equals(name)) != null)
+            {
+                Product product = products.Find(x => x.Name.Equals(name));
+                products.Remove(product);
+                Console.WriteLine("The product removal is complete.");
+
+            }
+            else
+            {
+                Console.WriteLine("The product you want Remove dose not exists.");
+            }
+        }
     }
 }

@@ -44,6 +44,10 @@ namespace Inventory_Management_System
                         break;
                     case 4:
                         //  remove a product from the inventory
+                        Console.Write("please Enter the Name of Product you want Remove: ");
+                        Inventory.RemoveProduct(Console.ReadLine());
+                        Console.WriteLine("Press any key to Back to Main Menu...");
+                        Console.ReadKey(); // Waits for the user to press any key
                         break;
                     case 5:
                         //search for a product in the inventory
