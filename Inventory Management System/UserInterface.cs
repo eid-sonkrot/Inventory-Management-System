@@ -3,7 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace Inventory_Management_System
 {
@@ -37,12 +39,19 @@ namespace Inventory_Management_System
                         break;
                     case 3:
                         // edit an existing product in the inventory
+                        
                         break;
                     case 4:
                         //  remove a product from the inventory
                         break;
                     case 5:
                         //search for a product in the inventory
+                        string name;
+                        Console.WriteLine("Please enter the name of the product you want to search for:");
+                        name = Console.ReadLine();
+                        Inventory.FindProduct(name);
+                        Console.WriteLine("Press any key to Back to Main Menu...");
+                        Console.ReadKey(); // Waits for the user to press any key
                         break;
                     case 6:
                         Console.Clear();
