@@ -39,7 +39,8 @@ namespace Inventory_Management_System
                         break;
                     case 3:
                         // edit an existing product in the inventory
-                        
+                        Console.Write("please Enter the Name of Product you want Edit: ");
+                        Inventory.EditProduct(Console.ReadLine());
                         break;
                     case 4:
                         //  remove a product from the inventory

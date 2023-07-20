@@ -69,9 +69,9 @@ namespace Inventory_Management_System
         }
         public static void FindProduct(string name)
         {
-            if (products.Find(x => x.Name.Equals(name))!=null)
+            if (products.Find(x => x.Name.Equals(name)) != null)
             {
-                Product product=products.Find(x => x.Name.Equals(name));
+                Product product = products.Find(x => x.Name.Equals(name));
                 // Get the type of the Product class using reflection
                 Type productType = typeof(Product);
 
@@ -97,6 +97,75 @@ namespace Inventory_Management_System
             else
             {
                 Console.WriteLine("The product you want is not exists." +
+                    " If you want to add the product " +
+                    " please select add option from the main list.");
+            }
+        }
+        //check if the value is valid or not 
+        public static bool TryParseValue(string userInput, Type propertyType, out object parsedValue)
+        {
+            try
+            {
+                parsedValue = Convert.ChangeType(userInput, propertyType);
+                return true;
+            }
+            catch
+            {
+                parsedValue = null;
+                return false;
+            }
+        }
+        public static void EditProduct(string name )
+        {
+            if (products.Find(x => x.Name.Equals(name)) != null)
+            {
+                Product product = products.Find(x => x.Name.Equals(name));
+                // Get the type of the Product class using reflection
+                Type productType = typeof(Product);
+
+                // Get all properties of the Product class
+                PropertyInfo[] properties = productType.GetProperties();
+                // Add the property names as table headers
+                string[] Head = properties.Select(x => x.Name).ToArray();
+
+                // loop on each properties 
+                for (int i = 0; i < properties.Length; i++)
+                {
+                    //give user choice to edit the  propertie
+                    Console.WriteLine("if you want edite The " + properties[i].Name+" Product"
+                        +" Tybe 1");
+                    string choice = Console.ReadLine();
+                    if (choice=="1")
+                    {
+                        bool IsValid = false;
+                        object parsedValue;
+                        do
+                        {
+
+                            // Inform the user to enter the New value of Propareties 
+                            Console.Write("Enter the product's " + properties[i].Name + " : ");
+                            //check the valadtion of The user input value 
+                            if (TryParseValue(Console.ReadLine(), properties[i].PropertyType, out  parsedValue))
+                            {
+                                IsValid = true;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Invalid input. Please enter an "+ properties[i].PropertyType + " Value.");
+
+                            }
+                        } while (!IsValid);
+                        properties[i].SetValue(product, parsedValue, null);
+
+                    }
+                    
+                }
+
+               
+            }
+            else
+            {
+                Console.WriteLine("The product you want Edit dose not exists." +
                     " If you want to add the product " +
                     " please select add option from the main list.");
             }
