@@ -1,5 +1,5 @@
-﻿using System;
-namespace Inventory_Management_System
+﻿
+namespace InventoryManagementSystem
 {
     public class UserInterface
     {
