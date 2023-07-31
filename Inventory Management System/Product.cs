@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+using System.Xml.Linq;
+using ConsoleTables;
 
 namespace InventoryManagementSystem
 {
@@ -17,9 +20,15 @@ namespace InventoryManagementSystem
             this.Price = Price;
             this.Quantity = Quantity;
         }
+        public Product()
+        {
+
+        }
         public void Input()
         {   //Validating the input to ensure its correctness
             var IsValid = false;    
+            
+           
             do
             {
                 var Name=(string)null;
@@ -55,7 +64,7 @@ namespace InventoryManagementSystem
             IsValid = false;
             do
             {
-                int Quantity;
+                var Quantity=0;
                 // Inform the user to enter the product's quantity
                 Console.Write("Enter the product's quantity: ");
                 if (int.TryParse(Console.ReadLine(), out Quantity))
