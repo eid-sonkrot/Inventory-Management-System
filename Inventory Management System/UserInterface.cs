@@ -2,7 +2,7 @@
 
 namespace InventoryManagementSystem
 {
-    internal class UserInterface
+    public class UserInterface
     {
         static void Main(string[] args)
         {

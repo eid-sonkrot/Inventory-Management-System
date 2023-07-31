@@ -2,7 +2,7 @@
 
 namespace InventoryManagementSystem
 {
-    internal class Inventory
+    public class Inventory
     {
     }
 }
