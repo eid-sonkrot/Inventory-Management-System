@@ -21,9 +21,8 @@ namespace InventoryManagementSystem
             }
             else
             {
-                Console.WriteLine(@"The product you want to add already exists.\n
-                     If you want to update the product information,
-                     please select that option from the main list.");
+                Console.WriteLine(@"The product you want to add already exists.
+If you want to update the product information,please select that option from the main list.");
             }
             System.Threading.Thread.Sleep(1000);
         }

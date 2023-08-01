@@ -8,13 +8,14 @@ namespace InventoryManagementSystem
         static void Main(string[] args)
         {
             UserInterface userInterface = new UserInterface();
+            var Play=(bool)true;
 
-            while (true)
+            while (Play)
             {
                 Console.WriteLine("Welcome to the Inventory Management System!");
                 userInterface.DisplayMenu();
                 var choice = userInterface.GetChoiceFromUser();
-                userInterface.HandleInventoryAction(choice);
+                Play=userInterface.HandleInventoryAction(choice);
                 Console.Clear();
             }
         }
@@ -44,7 +45,7 @@ namespace InventoryManagementSystem
             }
             return choice;
         }
-        public void HandleInventoryAction(int choice)
+        public bool HandleInventoryAction(int choice)
         {
             switch (choice)
             {
@@ -53,34 +54,43 @@ namespace InventoryManagementSystem
                     Product product = new Product();
                     product.Input();
                     Inventory.AddProduct(product);
-                    break;
+                    return true;
                 case 2:
                     // display all products in the inventory
                     Inventory.DisplayProducts();
                     Console.WriteLine("Press any key to Back to Main Menu...");
                     Console.ReadKey(); // Waits for the user to press any key
-                    break;
+                    return true;
                 case 3:
                     // edit an existing product in the inventory
                     Console.Write("please Enter the Name of Product you want Edit: ");
                     Inventory.EditProduct(Console.ReadLine());
-                    break;
+                    Console.WriteLine("Press any key to Back to Main Menu...");
+                    Console.ReadKey(); // Waits for the user to press any key
+                    return true;
                 case 4:
                     //  remove a product from the inventory
                     Console.Write("please Enter the Name of Product you want Remove: ");
                     Inventory.RemoveProduct(Console.ReadLine());
                     Console.WriteLine("Press any key to Back to Main Menu...");
                     Console.ReadKey(); // Waits for the user to press any key
-                    break;
+                    return true;
                 case 5:
                     //search for a product in the inventory
-                    break;
+                    var name=(string)null;
+                    Console.Write("Please enter the name of the product you want to search for:");
+                    name = Console.ReadLine();
+                    Inventory.FindProduct(name);
+                    Console.WriteLine("Press any key to Back to Main Menu...");
+                    Console.ReadKey(); // Waits for the user to press 
+                    return true;
                 case 6:
                     Console.Clear();
                     Console.WriteLine("Exiting the Inventory Management System. Goodbye!");
                     System.Threading.Thread.Sleep(1000);
-                    return;
+                    return false;
             }
+            return false;
         }
     }
 }

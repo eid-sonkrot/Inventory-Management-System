@@ -38,13 +38,13 @@ namespace InventoryManagementSystem
                 if(Regex.IsMatch(Name,this.ValidName))
                 {
                     IsValid = true;
+                    this.Name = Name;
                 }
                 else
                 {
                     Console.WriteLine("Invalid input. Please enter a Name contain Alpapitic character");
                 }
             } while (!IsValid);
-            this.Name = Name;
             IsValid = false;
             do
             {
@@ -54,13 +54,13 @@ namespace InventoryManagementSystem
                 if (double.TryParse(Console.ReadLine(), out Price))
                 {
                     IsValid = true;
+                    this.Price = Price;
                 }
                 else
                 {
                     Console.WriteLine("Invalid input. Please enter a name containing only alphabetical characters.");
                 }
             } while (!IsValid);
-            this.Price = Price;
             IsValid = false;
             do
             {
@@ -70,13 +70,13 @@ namespace InventoryManagementSystem
                 if (int.TryParse(Console.ReadLine(), out Quantity))
                 {
                     IsValid = true;
+                    this.Quantity = Quantity;
                 }
                 else
                 {
                     Console.WriteLine("Invalid input. Please enter an intger number.");
                 }
             } while (!IsValid);
-            this.Quantity = Quantity;
         }
     }
 }
