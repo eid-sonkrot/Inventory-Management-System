@@ -1,5 +1,4 @@
-﻿
-namespace InventoryManagementSystem
+﻿namespace InventoryManagementSystem
 {
     public class UserInterface
     {
@@ -37,7 +36,6 @@ namespace InventoryManagementSystem
                 Console.WriteLine("Welcome to the Inventory Management System!");
                 DisplayMenu();
                 Console.Write("Invalid input. Enter a valid choice (1-6): ");
-
             }
             return choice;
         }
