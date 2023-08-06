@@ -10,7 +10,7 @@ namespace InventoryManagementSystem
     {
         //List of products in our System 
         private List<Product> Products = new List<Product>();
-       
+
         //add Product to Products List
         public    void AddProduct( Product NewProduct)
         {
