@@ -13,7 +13,6 @@ namespace InventoryManagementSystem
         public int Quantity { get; set; }
         private string ValidName= @"^[A-Za-z]+$";
 
-
         public Product(string Name,double Price, int Quantity)
         {
             this.Name = Name;
@@ -22,13 +21,11 @@ namespace InventoryManagementSystem
         }
         public Product()
         {
-
         }
         public void Input()
         {   //Validating the input to ensure its correctness
             var IsValid = false;    
             
-           
             do
             {
                 var Name=(string)null;

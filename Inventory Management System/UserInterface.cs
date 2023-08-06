@@ -5,6 +5,7 @@ namespace InventoryManagementSystem
     public class UserInterface
     {
         private Inventory Inventory = new Inventory();
+
         static void Main(string[] args)
         {
             UserInterface userInterface = new UserInterface();
@@ -33,6 +34,7 @@ namespace InventoryManagementSystem
             Console.Write("Enter your choice (1-6): ");
             var choice = 0;
             var isValidInput = int.TryParse(Console.ReadLine(), out choice);
+            
             while (!isValidInput || choice < 1 || choice > 6)
             {
                 Console.Clear();
