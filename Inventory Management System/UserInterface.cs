@@ -5,6 +5,7 @@ namespace InventoryManagementSystem
     public class UserInterface
     {
         private Inventory Inventory = new Inventory();
+        
         static void Main(string[] args)
         {
             UserInterface userInterface = new UserInterface();
