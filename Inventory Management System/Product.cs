@@ -22,12 +22,10 @@ namespace InventoryManagementSystem
         }
         public Product()
         {
-
         }
         public void Input()
         {   //Validating the input to ensure its correctness
             var IsValid = false;    
-            
            
             do
             {
