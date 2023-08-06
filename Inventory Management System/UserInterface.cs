@@ -46,6 +46,7 @@ namespace InventoryManagementSystem
         public void HandleInventoryAction(int choice)
         {
             Inventory Inventory = new Inventory();
+            
             switch (choice)
             {
                 case 1:
