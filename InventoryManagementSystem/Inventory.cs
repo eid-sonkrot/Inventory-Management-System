@@ -31,7 +31,7 @@ namespace InventoryManagementSystem
         //Creat Taple Display All Products in Products List
         public  void DisplayProducts()
         {
-            var dataTable = new ConsoleTable(this.Products);
+            var dataTable =ConsoleTable.From(this.Products);
             // Print the table to the console
             dataTable.Write(Format.Alternative);
         }
