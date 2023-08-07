@@ -12,7 +12,7 @@ namespace InventoryManagementSystem
         private List<Product> Products = new List<Product>();
        
         //add Product to Products List
-        public    void AddProduct( Product NewProduct)
+        public void AddProduct( Product NewProduct)
         {
             if (!this.Products.Exists(x => x.Name.Equals(NewProduct.Name)))
             {

@@ -13,7 +13,6 @@ namespace InventoryManagementSystem
         public int Quantity { get; set; }
         private string ValidName= @"^[A-Za-z]+$";
 
-
         public Product(string Name,double Price, int Quantity)
         {
             this.Name = Name;
