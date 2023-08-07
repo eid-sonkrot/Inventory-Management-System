@@ -6,14 +6,14 @@ namespace InventoryManagementSystem
     public class Inventory
     {
         //List of products in our System 
-        private List<Product> Products = new List<Product>();
+        private var Products = new List<Product>();
        
         //add Product to Products List
-        public void AddProduct( Product NewProduct)
+        public void AddProduct( Product newProduct)
         {
-            if (!this.Products.Exists(x => x.Name.Equals(NewProduct.Name)))
+            if (!this.Products.Exists(x => x.Name.Equals(newProduct.Name)))
             {
-                this.Products.Add(NewProduct);
+                this.Products.Add(newProduct);
                 Console.WriteLine("The product addition is complete.");
             }
             else

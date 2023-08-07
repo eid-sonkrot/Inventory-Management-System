@@ -8,13 +8,13 @@ namespace InventoryManagementSystem
         public string Name { get; set; }
         public double Price { get; set; }
         public int Quantity { get; set; }
-        private string ValidName= @"^[A-Za-z]+$";
+        private var ValidName= @"^[A-Za-z]+$";
 
-        public Product(string Name,double Price, int Quantity)
+        public Product(string name,double price, int quantity)
         {
-            this.Name = Name;
-            this.Price = Price;
-            this.Quantity = Quantity;
+            this.Name = name;
+            this.Price = price;
+            this.Quantity = quantity;
         }
         public Product()
         {

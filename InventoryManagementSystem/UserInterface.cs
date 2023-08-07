@@ -6,7 +6,7 @@ namespace InventoryManagementSystem
     {
         static void Main(string[] args)
         {
-            UserInterface userInterface = new UserInterface();
+            var userInterface = new UserInterface();
             
             while (true)
             {
@@ -45,14 +45,13 @@ namespace InventoryManagementSystem
         }
         public void HandleInventoryAction(int choice)
         {
-            Inventory Inventory = new Inventory();
-            
+            var Inventory = new Inventory();
 
             switch (choice)
             {
                 case 1:
                     //  add a product to the inventory
-                    Product product = new Product();
+                    var product = new Product();
                     product.Input();
                     Inventory.AddProduct(product);
                     break;
