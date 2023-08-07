@@ -9,14 +9,15 @@ namespace InventoryManagementSystem
     public class Inventory
     {
         //List of products in our System 
-        private List<Product> Products = new List<Product>();
 
+        private var Products = new List<Product>();
+       
         //add Product to Products List
-        public    void AddProduct( Product NewProduct)
+        public void AddProduct( Product newProduct)
         {
-            if (!this.Products.Exists(x => x.Name.Equals(NewProduct.Name)))
+            if (!this.Products.Exists(x => x.Name.Equals(newProduct.Name)))
             {
-                this.Products.Add(NewProduct);
+                this.Products.Add(newProduct);
                 Console.WriteLine("The product addition is complete.");
             }
             else
@@ -31,18 +32,18 @@ namespace InventoryManagementSystem
         public  void DisplayProducts()
         {
             // Get the type of the Product class using reflection
-            Type productType = typeof(Product);
+            var productType = typeof(Product);
             // Get all properties of the Product class
-            PropertyInfo[] properties = productType.GetProperties();
+            var properties = productType.GetProperties();
             // Add the property names as table headers
-            string[] Head=properties.Select(x => x.Name).ToArray();
-            var dataTable = new ConsoleTable(Head);
+            var head=properties.Select(x => x.Name).ToArray();
+            var dataTable = new ConsoleTable(head);
             foreach (Product product in Products)
             {
                 // Create an array to store the property values for the current product
-                object[] propertyValues = new object[properties.Length];
+                var propertyValues = new object[properties.Length];
                 // Get the value of each property and add it to the array
-                for (int i = 0; i < properties.Length; i++)
+                for (var i = 0; i < properties.Length; i++)
                 {
                     propertyValues[i] = properties[i].GetValue(product);
                 }
