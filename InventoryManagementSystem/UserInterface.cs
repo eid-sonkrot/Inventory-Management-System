@@ -1,3 +1,4 @@
+﻿using System;
 namespace InventoryManagementSystem
 {
     public class UserInterface
@@ -5,7 +6,7 @@ namespace InventoryManagementSystem
         static void Main(string[] args)
         {
             UserInterface userInterface = new UserInterface();
-             
+            
             while (true)
             {
                 Console.WriteLine("Welcome to the Inventory Management System!");
@@ -33,9 +34,11 @@ namespace InventoryManagementSystem
             while (!isValidInput || choice < 1 || choice > 6)
             {
                 Console.Clear();
+                Console.WriteLine("Invalid Input plz chose a number from (1-6)");
                 Console.WriteLine("Welcome to the Inventory Management System!");
                 DisplayMenu();
-                Console.Write("Invalid input. Enter a valid choice (1-6): ");
+                Console.Write("Enter your choice (1-6): ");
+                isValidInput = int.TryParse(Console.ReadLine(), out choice);
             }
             return choice;
         }
