@@ -18,7 +18,8 @@ namespace InventoryManagementSystem
         }
         public void Input()
         {   //Validating the input to ensure its correctness
-            bool IsValid = false;    
+            var IsValid = false;
+               
             do
             {
                 string Name;
