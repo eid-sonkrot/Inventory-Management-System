@@ -47,6 +47,7 @@ namespace InventoryManagementSystem
         {
             Inventory Inventory = new Inventory();
             
+
             switch (choice)
             {
                 case 1:

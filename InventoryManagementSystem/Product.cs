@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-using ConsoleTables;
 
 namespace InventoryManagementSystem
 {
@@ -29,6 +26,7 @@ namespace InventoryManagementSystem
             do
             {
                 var Name=(string)null;
+
                 // Inform the user to enter the product's name
                 Console.Write("Enter the product's name: ");
                 Name = Console.ReadLine();
