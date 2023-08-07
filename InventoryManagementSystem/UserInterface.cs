@@ -45,7 +45,7 @@ namespace InventoryManagementSystem
         }
         public void HandleInventoryAction(int choice)
         {
-            var Inventory = new Inventory();
+            var inventory = new Inventory();
 
             switch (choice)
             {
