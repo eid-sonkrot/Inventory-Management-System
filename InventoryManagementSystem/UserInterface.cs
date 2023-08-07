@@ -1,11 +1,12 @@
 ﻿using System;
+
 namespace InventoryManagementSystem
 {
     public class UserInterface
     {
         static void Main(string[] args)
         {
-            UserInterface userInterface = new UserInterface();
+            var userInterface = new UserInterface();
             
             while (true)
             {
@@ -44,10 +45,15 @@ namespace InventoryManagementSystem
         }
         public void HandleInventoryAction(int choice)
         {
+            var inventory = new Inventory();
+
             switch (choice)
             {
                 case 1:
                     //  add a product to the inventory
+                    var product = new Product();
+                    product.Input();
+                    Inventory.AddProduct(product);
                     break;
                 case 2:
                     // display all products in the inventory
