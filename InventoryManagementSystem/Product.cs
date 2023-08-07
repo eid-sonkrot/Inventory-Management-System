@@ -26,7 +26,6 @@ namespace InventoryManagementSystem
         {   //Validating the input to ensure its correctness
             var IsValid = false;    
             
-           
             do
             {
                 var Name=(string)null;
