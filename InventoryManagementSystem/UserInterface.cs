@@ -1,4 +1,4 @@
-﻿namespace InventoryManagementSystem
+namespace InventoryManagementSystem
 {
     public class UserInterface
     {
