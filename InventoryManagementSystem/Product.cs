@@ -22,7 +22,7 @@ namespace InventoryManagementSystem
                
             do
             {
-                string Name;
+                var Name=null;
                 // Inform the user to enter the product's name
                 Console.Write("Enter the product's name: ");
                 Name = Console.ReadLine();
@@ -39,7 +39,7 @@ namespace InventoryManagementSystem
             IsValid = false;
             do
             {
-                Double Price;
+                var Price=0.0;
                 // Inform the user to enter the product's price
                 Console.Write("Enter the product's price: ");
                 if (double.TryParse(Console.ReadLine(), out Price))
@@ -55,7 +55,7 @@ namespace InventoryManagementSystem
             IsValid = false;
             do
             {
-                int Quantity;
+                var Quantity=0;
                 // Inform the user to enter the product's quantity
                 Console.Write("Enter the product's quantity: ");
                 if (int.TryParse(Console.ReadLine(), out Quantity))
