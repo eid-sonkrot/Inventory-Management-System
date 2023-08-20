@@ -23,7 +23,8 @@ namespace InventoryManagementSystem
         {
         }
         public void Input()
-        {   //Validating the input to ensure its correctness
+        {   
+          //Validating the input to ensure its correctness
             var isValid = false;    
               
             do
@@ -41,6 +42,7 @@ namespace InventoryManagementSystem
                 {
                     Console.WriteLine("Invalid input. Please enter a Name contain Alpapitic character");
                 }
+
             } while (!isValid);
             this.Name = name;
             isValid = false;

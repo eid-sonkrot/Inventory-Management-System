@@ -8,10 +8,7 @@ namespace InventoryManagementSystem
 {
     public class Inventory
     {
-        //List of products in our System 
-
         private var Products = new List<Product>();
-       
         //add Product to Products List
         public void AddProduct( Product newProduct)
         {
@@ -32,7 +29,6 @@ namespace InventoryManagementSystem
         public  void DisplayProducts()
         {
             var dataTable =ConsoleTable.From(this.Products);
-            // Print the table to the console
             dataTable.Write(Format.Alternative);
         }
     }

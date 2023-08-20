@@ -6,6 +6,7 @@ namespace InventoryManagementSystem
     {
         static void Main(string[] args)
         {
+
             var userInterface = new UserInterface();
           
             while (true)
@@ -32,6 +33,7 @@ namespace InventoryManagementSystem
             Console.Write("Enter your choice (1-6): ");
             var choice =0;
             var isValidInput = int.TryParse(Console.ReadLine(), out  choice);
+
             while (!isValidInput || choice < 1 || choice > 6)
             {
                 Console.Clear();
@@ -45,13 +47,15 @@ namespace InventoryManagementSystem
         }
         public void HandleInventoryAction(int choice)
         {
-            var inventory = new Inventory();
 
+            var inventory = new Inventory();
+          
             switch (choice)
             {
                 case 1:
                     //  add a product to the inventory
                     var product = new Product();
+                
                     product.Input();
                     Inventory.AddProduct(product);
                     break;
