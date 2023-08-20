@@ -8,7 +8,6 @@ namespace InventoryManagementSystem
 {
     public class Inventory
     {
-
         private var Products = new List<Product>();
         //add Product to Products List
         public void AddProduct( Product newProduct)
@@ -45,7 +44,7 @@ namespace InventoryManagementSystem
                 var[] Head = properties.Select(x => x.Name).ToArray();
                 var dataTable = new ConsoleTable(Head);
                 // Create an array to store the property values for the current product
-                object[] propertyValues = new object[properties.Length];
+                var[] propertyValues = new object[properties.Length];
                 // Get the value of each property and add it to the array
                 for (var i = 0; i < properties.Length; i++)
                 {
@@ -98,6 +97,7 @@ namespace InventoryManagementSystem
                     {
                         var IsValid = false;
                         object parsedValue;
+                      
                         do
                         {
                             // Inform the user to enter the New value of Propareties 
@@ -123,5 +123,19 @@ namespace InventoryManagementSystem
                      please select add option from the main list.");
             }
         }
+        public  void RemoveProduct(string name)
+        {
+            if (this.Products.Find(x => x.Name.Equals(name)) != null)
+            {
+                Product product = this.Products.Find(x => x.Name.Equals(name));
+                this.Products.Remove(product);
+                Console.WriteLine("The product removal is complete.");
+            }
+            else
+            {
+                Console.WriteLine("The product you want Remove dose not exists.");
+            }
+        }
     }
 }
+
