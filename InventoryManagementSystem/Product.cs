@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+using System.Xml.Linq;
+using ConsoleTables;
 
 namespace InventoryManagementSystem
 {
@@ -54,7 +57,7 @@ namespace InventoryManagementSystem
                 {
                     Console.WriteLine("Invalid input. Please enter a name containing only alphabetical characters.");
                 }
-            } while (!isValid);
+  } while (!isValid);
             this.Price = price;
             isValid = false;
             do

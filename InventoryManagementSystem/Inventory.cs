@@ -1,11 +1,15 @@
-﻿using System;
+﻿using ConsoleTables;
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 
 namespace InventoryManagementSystem
 {
     public class Inventory
     {
         //List of products in our System 
+
         private var Products = new List<Product>();
        
         //add Product to Products List
@@ -24,3 +28,12 @@ namespace InventoryManagementSystem
             }
             System.Threading.Thread.Sleep(1000);
         }
+        //Creat Taple Display All Products in Products List
+        public  void DisplayProducts()
+        {
+            var dataTable =ConsoleTable.From(this.Products);
+            // Print the table to the console
+            dataTable.Write(Format.Alternative);
+        }
+    }
+}
