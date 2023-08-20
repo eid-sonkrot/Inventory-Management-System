@@ -79,6 +79,7 @@ namespace InventoryManagementSystem
                     Console.WriteLine("Invalid input. Please enter an intger number.");
                 }
 
+
             } while (!isValid);
             this.Quantity = quantity;
         }

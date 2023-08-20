@@ -19,6 +19,7 @@ namespace InventoryManagementSystem
             }
             else
             {
+
                 Console.WriteLine(@"The product you want to add already exists.\n
                      If you want to update the product information,
                      please select that option from the main list.");
@@ -26,15 +27,18 @@ namespace InventoryManagementSystem
             System.Threading.Thread.Sleep(1000);
         }
         //Creat Taple Display All Products in Products List
+   // Print the table to the console
         public  void DisplayProducts()
         {
             var dataTable =ConsoleTable.From(this.Products);
+
             dataTable.Write(Format.Alternative);
         }
         public void FindProduct(string name)
         {
             if (this.Products.Find(x => x.Name.Equals(name)) != null)
             {
+
                 var product = this.Products.Find(x => x.Name.Equals(name));
                 // Get the type of the Product class using reflection
                 var productType = typeof(Product);
@@ -45,6 +49,7 @@ namespace InventoryManagementSystem
                 var dataTable = new ConsoleTable(Head);
                 // Create an array to store the property values for the current product
                 var[] propertyValues = new object[properties.Length];
+              
                 // Get the value of each property and add it to the array
                 for (var i = 0; i < properties.Length; i++)
                 {
@@ -80,6 +85,7 @@ namespace InventoryManagementSystem
         {
             if (this.Products.Find(x => x.Name.Equals(name)) != null)
             {
+
                 var product = this.Products.Find(x => x.Name.Equals(name));
                 // Get the type of the Product class using reflection
                 var productType = typeof(Product);
@@ -87,6 +93,7 @@ namespace InventoryManagementSystem
                 var[] properties = productType.GetProperties();
                 // Add the property names as table headers
                 var[] Head = properties.Select(x => x.Name).ToArray();
+              
                 // loop on each properties 
                 for (var i = 0; i < properties.Length; i++)
                 {
@@ -97,7 +104,7 @@ namespace InventoryManagementSystem
                     {
                         var IsValid = false;
                         object parsedValue;
-                      
+
                         do
                         {
                             // Inform the user to enter the New value of Propareties 
@@ -137,5 +144,5 @@ namespace InventoryManagementSystem
             }
         }
     }
-}
 
+}

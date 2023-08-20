@@ -4,7 +4,6 @@ namespace InventoryManagementSystem
 {
     public class UserInterface
     {
-
         static void Main(string[] args)
         {
             var userInterface = new UserInterface();
@@ -14,6 +13,7 @@ namespace InventoryManagementSystem
                 Console.WriteLine("Welcome to the Inventory Management System!");
                 userInterface.DisplayMenu();
                 var choice = userInterface.GetChoiceFromUser();
+
                 userInterface.HandleInventoryAction(choice);
                 Console.Clear();
             }
@@ -45,6 +45,7 @@ namespace InventoryManagementSystem
             }
             return choice;
         }
+
         public void HandleInventoryAction(int choice)
         {
             var inventory = new Inventory();
@@ -67,7 +68,7 @@ namespace InventoryManagementSystem
                 case 3:
                     // edit an existing product in the inventory
                     Console.Write("please Enter the Name of Product you want Edit: ");
-                    Inventory.EditProduct(Console.ReadLine());
+                    Inventory.EditProduct(Console.ReadLine()); 
                     break;
                 case 4:
                     //  remove a product from the inventory
@@ -75,7 +76,7 @@ namespace InventoryManagementSystem
                     Inventory.RemoveProduct(Console.ReadLine());
                     Console.WriteLine("Press any key to Back to Main Menu...");
                     Console.ReadKey(); // Waits for the user to press any key
-                    break;
+               break;
                 case 5:
                     //search for a product in the inventory
                     break;
