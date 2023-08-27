@@ -11,7 +11,7 @@ namespace InventoryManagementSystem
         public string Name { get; set; }
         public double Price { get; set; }
         public int Quantity { get; set; }
-        private var ValidName= @"^[A-Za-z]+$";
+        private string ValidName= @"^[A-Za-z]+$";
 
         public Product(string name,double price, int quantity)
         {
@@ -41,33 +41,31 @@ namespace InventoryManagementSystem
                 {
                     Console.WriteLine("Invalid input. Please enter a Name contain Alpapitic character");
                 }
-            } while (!IsValid);
-            this.Name = Name;
-            IsValid = false;
-            var Price=0.0;
+            } while (!isValid);
+            this.Name = name;
+            isValid = false;
+            var price=0.0;
           
             do
             {
                 // Inform the user to enter the product's price
                 Console.Write("Enter the product's price: ");
-                if (double.TryParse(Console.ReadLine(), out Price))
+                if (double.TryParse(Console.ReadLine(), out price))
                 {
-                    IsValid = true;
-
+                    isValid = true;
                 }
                 else
                 {
                     Console.WriteLine("Invalid input. Please enter a name containing only alphabetical characters.");
                 }
 
-  } while (!isValid);
+            } while (!isValid);
             this.Price = price;
             var quantity=0;
           
             isValid = false;
             do
             {
-               
                 // Inform the user to enter the product's quantity
                 Console.Write("Enter the product's quantity: ");
                 if (int.TryParse(Console.ReadLine(), out quantity))
@@ -78,7 +76,6 @@ namespace InventoryManagementSystem
                 {
                     Console.WriteLine("Invalid input. Please enter an intger number.");
                 }
-
 
             } while (!isValid);
             this.Quantity = quantity;

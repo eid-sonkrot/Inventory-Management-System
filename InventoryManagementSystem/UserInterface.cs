@@ -4,6 +4,8 @@ namespace InventoryManagementSystem
 {
     public class UserInterface
     {
+        public Inventory inventory = new Inventory();
+
         static void Main(string[] args)
         {
             var userInterface = new UserInterface();
@@ -48,7 +50,7 @@ namespace InventoryManagementSystem
 
         public void HandleInventoryAction(int choice)
         {
-            var inventory = new Inventory();
+           
           
             switch (choice)
             {
@@ -57,28 +59,32 @@ namespace InventoryManagementSystem
                     var product = new Product();
                 
                     product.Input();
-                    Inventory.AddProduct(product);
+                    inventory.AddProduct(product);
                     break;
                 case 2:
                     // display all products in the inventory
-                    Inventory.DisplayProducts();
+                    inventory.DisplayProducts();
                     Console.WriteLine("Press any key to Back to Main Menu...");
                     Console.ReadKey(); // Waits for the user to press any key
                     break;
                 case 3:
                     // edit an existing product in the inventory
                     Console.Write("please Enter the Name of Product you want Edit: ");
-                    Inventory.EditProduct(Console.ReadLine()); 
+                    inventory.EditProduct(Console.ReadLine()); 
                     break;
                 case 4:
                     //  remove a product from the inventory
                     Console.Write("please Enter the Name of Product you want Remove: ");
-                    Inventory.RemoveProduct(Console.ReadLine());
+                    inventory.RemoveProduct(Console.ReadLine());
                     Console.WriteLine("Press any key to Back to Main Menu...");
                     Console.ReadKey(); // Waits for the user to press any key
                break;
                 case 5:
                     //search for a product in the inventory
+                    Console.Write("please enter product name : ");
+                    inventory.FindProduct(Console.ReadLine());
+                    Console.WriteLine("Press any key to Back to Main Menu...");
+                    Console.ReadKey(); // Waits for the user to press any key
                     break;
                 case 6:
                     Console.Clear();
