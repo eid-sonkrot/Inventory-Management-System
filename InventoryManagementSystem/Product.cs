@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+using System.Xml.Linq;
+using ConsoleTables;
 
 namespace InventoryManagementSystem
 {
@@ -20,13 +23,13 @@ namespace InventoryManagementSystem
         {
         }
         public void Input()
-        {   //Validating the input to ensure its correctness
-            var isValid = false;    
-              
+        {   
+          //Validating the input to ensure its correctness
+            var isValid = false;
+            var name=(string)null;
+          
             do
             {
-                var name=(string)null;
-
                 // Inform the user to enter the product's name
                 Console.Write("Enter the product's name: ");
                 name = Console.ReadLine();
@@ -38,28 +41,33 @@ namespace InventoryManagementSystem
                 {
                     Console.WriteLine("Invalid input. Please enter a Name contain Alpapitic character");
                 }
-            } while (!isValid);
-            this.Name = name;
-            isValid = false;
+            } while (!IsValid);
+            this.Name = Name;
+            IsValid = false;
+            var Price=0.0;
+          
             do
             {
-                var price=0.0;
                 // Inform the user to enter the product's price
                 Console.Write("Enter the product's price: ");
-                if (double.TryParse(Console.ReadLine(), out price))
+                if (double.TryParse(Console.ReadLine(), out Price))
                 {
-                    isValid = true;
+                    IsValid = true;
+
                 }
                 else
                 {
                     Console.WriteLine("Invalid input. Please enter a name containing only alphabetical characters.");
                 }
-            } while (!isValid);
+
+  } while (!isValid);
             this.Price = price;
+            var quantity=0;
+          
             isValid = false;
             do
             {
-                var quantity=0;
+               
                 // Inform the user to enter the product's quantity
                 Console.Write("Enter the product's quantity: ");
                 if (int.TryParse(Console.ReadLine(), out quantity))
@@ -70,6 +78,8 @@ namespace InventoryManagementSystem
                 {
                     Console.WriteLine("Invalid input. Please enter an intger number.");
                 }
+
+
             } while (!isValid);
             this.Quantity = quantity;
         }
