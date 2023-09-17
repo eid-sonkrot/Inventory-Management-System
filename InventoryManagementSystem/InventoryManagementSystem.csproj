@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{C3508B38-4E06-4A27-88FC-A611F7665725}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Inventory_Management_System</RootNamespace>
-    <AssemblyName>Inventory Management System</AssemblyName>
+    <RootNamespace>InventoryManagementSystem</RootNamespace>
+    <AssemblyName>InventoryManagementSystem</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
