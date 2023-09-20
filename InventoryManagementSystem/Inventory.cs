@@ -10,36 +10,26 @@ namespace InventoryManagementSystem
     public class Inventory
     {
         private List<Product> Products = new List<Product>();
+        private IProductRepository ProductRepository=new DataAccessFactory().GetDataAccess();
         //add Product to Products List
         public void AddProduct( Product newProduct)
         {
-            if (!this.Products.Exists(x => x.Name.Equals(newProduct.Name)))
-            {
-                this.Products.Add(newProduct);
-                Console.WriteLine("The product addition is complete.");
-            }
-            else
-            {
-                Console.WriteLine(@"The product you want to add already exists.\n
-                     If you want to update the product information,
-                     please select that option from the main list.");
-            }
-            System.Threading.Thread.Sleep(1000);
+            ProductRepository.InsertProduct(newProduct);
         }
         //Creat Taple Display All Products in Products List
         // Print the table to the console
         public  void DisplayProducts()
         {
-            var dataTable =ConsoleTable.From(this.Products);
+            var dataTable =ConsoleTable.From(this.ProductRepository.SelectAllProducts());
 
             dataTable.Write(Format.Alternative);
         }
         public void FindProduct(string name)
         {
-            if (this.Products.Find(x => x.Name.Equals(name)) != null)
+            if (ProductRepository.GetProduct(name) != null)
             {
 
-                var product = this.Products.Find(x => x.Name.Equals(name));
+                var product = ProductRepository.GetProduct(name);
                 var dataTable = ConsoleTable.From(new List<Product> { product});
                 // Print the table to the console
                 dataTable.Write(Format.Alternative);
@@ -68,10 +58,11 @@ namespace InventoryManagementSystem
         }
         public  void EditProduct(string name )
         {
-            if (this.Products.Find(x => x.Name.Equals(name)) != null)
+            if (ProductRepository.GetProduct(name) != null)
             {
 
-                var product = this.Products.Find(x => x.Name.Equals(name));
+                var product = ProductRepository.GetProduct(name);
+
                 // Get the type of the Product class using reflection
                 var productType = typeof(Product);
                 // Get all properties of the Product class
@@ -105,6 +96,7 @@ namespace InventoryManagementSystem
                             }
                         } while (!IsValid);
                         properties[i].SetValue(product, parsedValue, null);
+                        ProductRepository.UpdateProduct(product,name);
                     }
                 }
             }
@@ -118,11 +110,9 @@ namespace InventoryManagementSystem
         }
         public  void RemoveProduct(string name)
         {
-            if (this.Products.Find(x => x.Name.Equals(name)) != null)
+            if (ProductRepository.GetProduct(name) != null)
             {
-                var product = this.Products.Find(x => x.Name.Equals(name));
-                this.Products.Remove(product);
-
+                ProductRepository.DeleteProduct(name);
                 Console.WriteLine("The product removal is complete.");
             }
             else
