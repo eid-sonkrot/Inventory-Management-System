@@ -37,6 +37,7 @@
       <HintPath>packages\ConsoleTables.2.3.0\lib\net40\ConsoleTables.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -46,8 +47,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataAccessFactory.cs" />
+    <Compile Include="IDataAccessFactory.cs" />
     <Compile Include="Inventory.cs" />
+    <Compile Include="IProductRepository.cs" />
     <Compile Include="Product.cs" />
+    <Compile Include="ProductMongoDb.cs" />
+    <Compile Include="ProductSql.cs" />
     <Compile Include="UserInterface.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
