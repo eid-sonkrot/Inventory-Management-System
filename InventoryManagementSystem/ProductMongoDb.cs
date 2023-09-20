@@ -19,18 +19,35 @@ namespace InventoryManagementSystem
         {
             var client = new MongoClient(connectionString);
             var database = client.GetDatabase(databaseName);
+
             collection = database.GetCollection<Product>(collectionName);
         }
         public void DeleteProduct(string name)
         {
-            var filter = Builders<Product>.Filter.Eq(p => p.Name, name);
-            collection.DeleteOne(filter);
+            try
+            {
+                var filter = Builders<Product>.Filter.Eq(p => p.Name, name);
+
+                collection.DeleteOne(filter);
+            }
+            catch(MongoException ex) 
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
         public Product GetProduct(string name)
         {
-            var filter = Builders<Product>.Filter.Eq(p => p.Name, name);
+            try 
+            { 
+               var filter = Builders<Product>.Filter.Eq(p => p.Name, name);
 
-            return collection.Find(filter).First();
+               return collection.Find(filter).First();
+            }
+            catch(MongoException ex) 
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return null;
         }
         public void InsertProduct(Product product)
         {
@@ -48,6 +65,7 @@ namespace InventoryManagementSystem
             try
             {
                 var productList = collection.Find(p=>p.Name==p.Name).ToList();
+
                 return productList;
             }
             catch (MongoException ex)
@@ -62,9 +80,16 @@ namespace InventoryManagementSystem
         }
         public void UpdateProduct(Product product,string name) 
         {
-            var filter = Builders<Product>.Filter.Eq(p => p.Name,name);
+            try 
+            { 
+                var filter = Builders<Product>.Filter.Eq(p => p.Name,name);
 
-            collection.UpdateOne(filter, Builders<Product>.Update.Set(p=>p,product));
+                collection.UpdateOne(filter, Builders<Product>.Update.Set(p=>p,product));
+            }
+            catch (MongoException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
     
     }
