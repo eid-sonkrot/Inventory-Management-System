@@ -3,9 +3,12 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using ConsoleTables;
+using MongoDB.Bson.Serialization.Attributes;
+using MongoDB.Bson;
 
 namespace InventoryManagementSystem
 {
+    [BsonIgnoreExtraElements]
     public class Product
     {
         public string Name { get; set; }

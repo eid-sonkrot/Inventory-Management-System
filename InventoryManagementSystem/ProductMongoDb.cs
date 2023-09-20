@@ -1,51 +1,71 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Configuration;
+using MongoDB.Bson;
+using MongoDB.Driver;
+using MongoDB.Driver.Core.Configuration;
 
 namespace InventoryManagementSystem
 {
     public class ProductMongoDb : IProductRepository
     {
+        private readonly IMongoCollection<Product> collection;
+        private string connectionString = ConfigurationManager.ConnectionStrings["MyDbConnection"].ConnectionString;
+        private string databaseName = "Products";
+        private string collectionName = "Products";
+
+        public ProductMongoDb() 
+        {
+            var client = new MongoClient(connectionString);
+            var database = client.GetDatabase(databaseName);
+            collection = database.GetCollection<Product>(collectionName);
+        }
         public void DeleteProduct(string name)
         {
-            throw new System.NotImplementedException();
+            var filter = Builders<Product>.Filter.Eq(p => p.Name, name);
+            collection.DeleteOne(filter);
         }
-
         public Product GetProduct(string name)
         {
-            throw new System.NotImplementedException();
-        }
+            var filter = Builders<Product>.Filter.Eq(p => p.Name, name);
 
+            return collection.Find(filter).First();
+        }
         public void InsertProduct(Product product)
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                collection.InsertOne(product);
+            }
+            catch(MongoBulkWriteException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
-
         public List<Product> SelectAllProducts()
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                var productList = collection.Find(p=>p.Name==p.Name).ToList();
+                return productList;
+            }
+            catch (MongoException ex)
+            {
+                Console.WriteLine("MongoDB Exception: " + ex.Message);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("An unexpected error occurred: " + ex.Message);
+            }
+            return new List<Product>();
         }
-        void IProductRepository.DeleteProduct(string name)
+        public void UpdateProduct(Product product,string name) 
         {
-            throw new System.NotImplementedException();
-        }
+            var filter = Builders<Product>.Filter.Eq(p => p.Name,name);
 
-        Product IProductRepository.GetProduct(string name)
-        {
-            throw new System.NotImplementedException();
+            collection.UpdateOne(filter, Builders<Product>.Update.Set(p=>p,product));
         }
-
-        void IProductRepository.InsertProduct(Product product)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        List<Product> IProductRepository.SelectAllProducts()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        void IProductRepository.UpdateProduct(Product product, string name)
-        {
-            throw new System.NotImplementedException();
-        }
+    
     }
 }
