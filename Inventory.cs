@@ -30,7 +30,7 @@ namespace InventoryManagementSystem
         // Print the table to the console
         public  void DisplayProducts()
         {
-            var dataTable =ConsoleTable.From(this.Products);
+            var dataTable = ConsoleTable.From(this.Products);
 
             dataTable.Write(Format.Alternative);
         }
